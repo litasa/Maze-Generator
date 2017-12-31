@@ -176,10 +176,14 @@
   <ItemGroup>
     <ClInclude Include="..\source\core\maze_generation.h" />
     <ClInclude Include="..\source\generators\kruskal.h" />
+    <ClInclude Include="..\source\generators\sidewinder.h" />
+    <ClInclude Include="..\source\io\io.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\core\maze_generation.cpp" />
     <ClCompile Include="..\source\generators\kruskal.cpp" />
+    <ClCompile Include="..\source\generators\sidewinder.cpp" />
+    <ClCompile Include="..\source\io\io.cpp" />
     <ClCompile Include="..\source\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

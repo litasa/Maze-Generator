@@ -23,8 +23,10 @@ project "maze_generation"
 
     files {
         "./source/main.cpp",
-        "./source/core/*.h", "./source/core/*.cpp", 
-        "./source/generators/*.h", "./source/generators/*.cpp"
+        "./source/**.h", "./source/**.cpp"
+    }
+    removefiles{
+        "./source/unit_tests/**"
     }
 
     includedirs {

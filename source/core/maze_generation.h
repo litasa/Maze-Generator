@@ -4,14 +4,6 @@
 #include <algorithm>
 
 #include <unordered_map>
-#include <sstream>
-#include <iostream>
-#include <fstream>
-#include <random>       // std::default_random_engine
-#include <chrono>       // std::chrono::system_clock
-
-#include <io.h>    // for _setmode()
-#include <fcntl.h> // for _O_U16TEXT
 
 namespace maze {
 
@@ -67,11 +59,6 @@ namespace maze {
 
 	};
 
-	namespace helper
-	{
-		std::wstring determine_corner_utf8(cell* current, cell* east, cell* south, cell* south_east);
-	}
-
 	struct grid
 	{
 		grid(uint32_t rows, uint32_t collumns);
@@ -94,8 +81,5 @@ namespace maze {
 		uint32_t _rows, _collumns;
 		std::vector<std::vector<cell*>> _grid;
 	};
-
-	//void apply_kruskal(grid* grid);
-
 
 }

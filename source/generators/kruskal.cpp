@@ -1,5 +1,8 @@
 #include "kruskal.h"
 
+#include <random>       // std::default_random_engine
+#include <chrono>       // std::chrono::system_clock
+
 namespace maze
 {
     // Kruskals Algorithm

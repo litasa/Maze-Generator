@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "core/maze_generation.h"
+#include "io\io.h"
 #include "generators/kruskal.h"
 
 void problem(unsigned line)
@@ -24,10 +25,10 @@ int main()
 		if (g.get_cell(0, -1) != nullptr) { problem(__LINE__); }
 		//outside below
 		if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
-	g.print_to_console();
+	maze::io::print_to_console(&g);
 	maze::kruskal::apply(&g);
-	g.print_to_console();
-	g.save_as_txt("test.txt");
+	maze::io::print_to_console(&g);
+	maze::io::save_as_txt(&g, "test.txt");
 
 	std::cin.get();
 }

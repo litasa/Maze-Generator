@@ -7,6 +7,9 @@
     <Filter Include="generators">
       <UniqueIdentifier>{9F2D13BF-8BE5-540C-F4EC-2D68E0C3EFFC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="io">
+      <UniqueIdentifier>{3D785900-2904-880B-92B2-880B7E5D880B}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\core\maze_generation.h">
@@ -15,6 +18,12 @@
     <ClInclude Include="..\source\generators\kruskal.h">
       <Filter>generators</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\generators\sidewinder.h">
+      <Filter>generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\io\io.h">
+      <Filter>io</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\core\maze_generation.cpp">
@@ -22,6 +31,12 @@
     </ClCompile>
     <ClCompile Include="..\source\generators\kruskal.cpp">
       <Filter>generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\generators\sidewinder.cpp">
+      <Filter>generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\io\io.cpp">
+      <Filter>io</Filter>
     </ClCompile>
     <ClCompile Include="..\source\main.cpp" />
   </ItemGroup>
