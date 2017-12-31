@@ -95,7 +95,7 @@ namespace maze {
 		std::vector<std::vector<cell*>> _grid;
 	};
 
-	void apply_kruskal(grid* grid);
+	//void apply_kruskal(grid* grid);
 
 
 }

@@ -35,10 +35,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DD99FFBB-4925-6D80-5236-F074BE40C980}</ProjectGuid>
+    <ProjectGuid>{972265CA-83DA-A617-ECE1-7F73D8B84108}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>maze_generation</RootNamespace>
+    <RootNamespace>unit_tests</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -84,29 +84,29 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>bin\Debug\x86\</OutDir>
-    <IntDir>obj\Win32\Debug\maze_generation\</IntDir>
-    <TargetName>maze_generation</TargetName>
+    <IntDir>obj\Win32\Debug\unit_tests\</IntDir>
+    <TargetName>unit_tests</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Win64|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>bin\Debug\x86_64\</OutDir>
-    <IntDir>obj\Win64\Debug\maze_generation\</IntDir>
-    <TargetName>maze_generation</TargetName>
+    <IntDir>obj\Win64\Debug\unit_tests\</IntDir>
+    <TargetName>unit_tests</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>bin\Release\x86\</OutDir>
-    <IntDir>obj\Win32\Release\maze_generation\</IntDir>
-    <TargetName>maze_generation</TargetName>
+    <IntDir>obj\Win32\Release\unit_tests\</IntDir>
+    <TargetName>unit_tests</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win64|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>bin\Release\x86_64\</OutDir>
-    <IntDir>obj\Win64\Release\maze_generation\</IntDir>
-    <TargetName>maze_generation</TargetName>
+    <IntDir>obj\Win64\Release\unit_tests\</IntDir>
+    <TargetName>unit_tests</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -174,13 +174,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\core\maze_generation.h" />
-    <ClInclude Include="..\source\generators\kruskal.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\source\core\maze_generation.cpp" />
-    <ClCompile Include="..\source\generators\kruskal.cpp" />
-    <ClCompile Include="..\source\main.cpp" />
+    <ClCompile Include="..\source\unit_tests\test1.cpp" />
+    <ClCompile Include="..\source\unit_tests\unit_test_main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

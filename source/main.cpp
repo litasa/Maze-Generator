@@ -1,11 +1,13 @@
 #include <iostream>
 
-#include "maze_generation.h"
+#include "core/maze_generation.h"
+#include "generators/kruskal.h"
 
 void problem(unsigned line)
 {
 	std::wcout << "Problem at : " << line << std::endl;
 }
+
 int main()
 {
 	int width, height;
@@ -23,7 +25,7 @@ int main()
 		//outside below
 		if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
 	g.print_to_console();
-	apply_kruskal(&g);
+	maze::kruskal::apply(&g);
 	g.print_to_console();
 	g.save_as_txt("test.txt");
 

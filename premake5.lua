@@ -21,7 +21,34 @@ project "maze_generation"
     location "solution"
     targetdir "solution/bin/%{cfg.buildcfg}/%{cfg.architecture}/"
 
-    files { "./source/*.h", "./source/*.cpp"}
+    files {
+        "./source/main.cpp",
+        "./source/core/*.h", "./source/core/*.cpp", 
+        "./source/generators/*.h", "./source/generators/*.cpp"
+    }
+
+    includedirs {
+    }
+
+
+    --Debug and Release configurations
+    filter "configurations:Debug"
+        defines { "DEBUG" }
+        symbols "On"
+
+    filter "configurations:Release"
+        defines { "NDEBUG" }
+        optimize "On"
+
+    filter { }
+
+project "unit_tests"
+    kind "ConsoleApp"
+    language "C++"
+    location "solution"
+    targetdir "solution/bin/%{cfg.buildcfg}/%{cfg.architecture}/"
+
+    files { "./source/unit_tests/*.cpp", "./source/unit_tests/*.h"}
 
     includedirs {
     }
