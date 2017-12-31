@@ -3,6 +3,7 @@
 #include "core/maze_generation.h"
 #include "io\io.h"
 #include "generators/kruskal.h"
+#include "generators\sidewinder.h"
 
 void problem(unsigned line)
 {
@@ -27,7 +28,10 @@ int main()
         //outside below
         if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
     maze::io::print_to_console(&g);
-    maze::kruskal::apply(&g);
+
+    maze::sidewinder::apply(&g);
+    //maze::kruskal::apply(&g);
+
     maze::io::print_to_console(&g);
     maze::io::save_as_txt(&g, "test.txt");
 

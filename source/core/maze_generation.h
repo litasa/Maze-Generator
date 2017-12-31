@@ -25,11 +25,19 @@ namespace maze {
 
         void link_with(cell* cell, bool bidirectional = true)
         {
-            _links.push_back(cell);
-            if (bidirectional)
+            if (cell != nullptr)
             {
-                cell->link_with(this, false);
+                _links.push_back(cell);
+                if (bidirectional)
+                {
+                    cell->link_with(this, false);
+                }
             }
+        }
+
+        void link_with(dir dir, bool bidirectional = true)
+        {
+            link_with(_neighbours[dir], bidirectional);
         }
 
         void unlink(cell* target, bool bidirectional = true)
