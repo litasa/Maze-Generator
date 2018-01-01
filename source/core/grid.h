@@ -23,8 +23,6 @@ namespace maze
         ~grid();
 
         cell* get_cell(int row, int collumn);
-        void save_as_txt(const char* path);
-        void print_to_console();
 
         uint32_t number_of_cells() { return _rows*_collumns; }
         uint32_t number_of_rows() { return _rows; }
@@ -33,7 +31,6 @@ namespace maze
     private:
         void initialize();
         void setup_cells();
-        std::wstringstream grid_to_utf8();
 
         uint32_t _rows, _collumns;
         std::vector<std::vector<cell*>> _grid;
