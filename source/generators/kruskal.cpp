@@ -83,5 +83,5 @@ namespace maze
                 }
             }
         }
-    }
-}
+    } //namespace kruskal
+}//namespace maze

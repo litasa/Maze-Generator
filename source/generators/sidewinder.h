@@ -4,6 +4,7 @@ namespace maze
 {
     class grid;
 }
+
 namespace maze
 {
     namespace sidewinder

@@ -29,5 +29,5 @@ namespace maze
                 }
             }
         }
-    }
-}
+    } //namespace binary_tree
+}//namespace maze

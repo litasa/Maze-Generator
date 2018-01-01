@@ -42,5 +42,5 @@ namespace maze
                 }
             }
         }
-    }
-}
+    } //namespace sidewinder
+}//namespace maze
