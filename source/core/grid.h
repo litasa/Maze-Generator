@@ -18,6 +18,7 @@ namespace maze
     class grid
     {
     public:
+        grid() = delete;
         grid(uint32_t rows, uint32_t collumns);
 
         ~grid();
