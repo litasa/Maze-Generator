@@ -353,3 +353,11 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+
+# Project files (generated from premake instead)
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# txt files
+*.txt
