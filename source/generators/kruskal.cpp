@@ -1,7 +1,6 @@
 #include "kruskal.h"
 
-#include <random>       // std::default_random_engine
-#include <chrono>       // std::chrono::system_clock
+#include "../math/probability.h"
 
 namespace maze
 {
@@ -71,8 +70,7 @@ namespace maze
 
             // Generation happens here.
             // Since the passage cost is the same, randomize the neighbours vector and loop over it
-            unsigned seed = (unsigned)std::chrono::system_clock::now().time_since_epoch().count();
-            std::shuffle(neighbours.begin(), neighbours.end(), std::default_random_engine(seed));
+            std::shuffle(neighbours.begin(), neighbours.end(), math::probability::global_random_engine());
             while (neighbours.size() > 0)
             {
                 std::pair<cell*, cell*> pair = neighbours.back();
