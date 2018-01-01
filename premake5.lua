@@ -19,7 +19,7 @@ project "maze_generation"
     kind "ConsoleApp"
     language "C++"
     location "solution"
-    targetdir "solution/bin/%{cfg.buildcfg}/%{cfg.architecture}/"
+    targetdir "bin/%{cfg.buildcfg}/%{cfg.architecture}/"
 
     files {
         "./source/main.cpp",
@@ -48,7 +48,7 @@ project "unit_tests"
     kind "ConsoleApp"
     language "C++"
     location "solution"
-    targetdir "solution/bin/%{cfg.buildcfg}/%{cfg.architecture}/"
+    targetdir "bin/%{cfg.buildcfg}/%{cfg.architecture}/"
 
     files { "./source/unit_tests/*.cpp", "./source/unit_tests/*.h"}
 
