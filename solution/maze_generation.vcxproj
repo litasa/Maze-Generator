@@ -174,17 +174,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\core\maze_generation.h" />
+    <ClInclude Include="..\source\core\cell.h" />
+    <ClInclude Include="..\source\core\grid.h" />
+    <ClInclude Include="..\source\generators\binary_tree.h" />
     <ClInclude Include="..\source\generators\kruskal.h" />
     <ClInclude Include="..\source\generators\sidewinder.h" />
     <ClInclude Include="..\source\io\io.h" />
+    <ClInclude Include="..\source\math\probability.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\core\maze_generation.cpp" />
+    <ClCompile Include="..\source\core\cell.cpp" />
+    <ClCompile Include="..\source\core\grid.cpp" />
+    <ClCompile Include="..\source\generators\binary_tree.cpp" />
     <ClCompile Include="..\source\generators\kruskal.cpp" />
     <ClCompile Include="..\source\generators\sidewinder.cpp" />
     <ClCompile Include="..\source\io\io.cpp" />
     <ClCompile Include="..\source\main.cpp" />
+    <ClCompile Include="..\source\math\probability.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

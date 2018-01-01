@@ -1,9 +1,10 @@
 #include <iostream>
 
-#include "core/maze_generation.h"
+#include "core\grid.h"
 #include "io\io.h"
-#include "generators/kruskal.h"
+#include "generators\kruskal.h"
 #include "generators\sidewinder.h"
+#include "generators\binary_tree.h"
 
 void problem(unsigned line)
 {
@@ -29,7 +30,8 @@ int main()
         if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
     maze::io::print_to_console(&g);
 
-    maze::sidewinder::apply(&g);
+    maze::binary_tree::apply(&g);
+    //maze::sidewinder::apply(&g);
     //maze::kruskal::apply(&g);
 
     maze::io::print_to_console(&g);

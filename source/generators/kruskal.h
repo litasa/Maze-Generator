@@ -1,4 +1,9 @@
-#include "../core/maze_generation.h"
+
+//forward decleration
+namespace maze
+{
+    class grid;
+}
 
 namespace maze
 {

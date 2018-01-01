@@ -1,4 +1,13 @@
 ﻿#include "io.h"
+
+#include <iostream>
+#include <fstream>
+
+#include <io.h>    // for _setmode()
+#include <fcntl.h> // for _O_U16TEXT
+
+#include "../core/grid.h"
+#include "../core/cell.h"
 namespace maze
 {
     namespace io
@@ -91,7 +100,7 @@ namespace maze
                     }
                     else
                     {
-                        corner = helper::determine_corner_utf8(current, east, south, south_east);
+                        corner = determine_corner_utf8(current, east, south, south_east);
                     }
 
                     bottom += south_boundary + corner;
@@ -101,7 +110,7 @@ namespace maze
             return ss;
         }
 
-        std::wstring helper::determine_corner_utf8(cell* current, cell* east, cell* south, cell* south_east)
+        std::wstring determine_corner_utf8(cell* current, cell* east, cell* south, cell* south_east)
         {
             cell temp(-1, -1);
             if (south_east == nullptr)

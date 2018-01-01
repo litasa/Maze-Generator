@@ -1,6 +1,8 @@
 #include "sidewinder.h"
 
 #include "../math/probability.h"
+#include "../core/grid.h"
+#include "../core/cell.h"
 
 namespace maze
 {
