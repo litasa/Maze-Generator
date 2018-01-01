@@ -30,9 +30,9 @@ int main()
         if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
     maze::io::print_to_console(&g);
 
-    maze::binary_tree::apply(&g);
-    //maze::sidewinder::apply(&g);
-    //maze::kruskal::apply(&g);
+    maze::generator::binary_tree::apply(&g);
+    //maze::generator::sidewinder::apply(&g);
+    //maze::generator::kruskal::apply(&g);
 
     maze::io::print_to_console(&g);
     maze::io::save_as_txt(&g, "test.txt");

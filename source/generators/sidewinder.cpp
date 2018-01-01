@@ -6,41 +6,44 @@
 
 namespace maze
 {
-    // Sidewinder Algorithm
-    // For each cell in a row:
-    // 1. Flip a coin.
-    //    True:  Link and move east. Add cell to current run
-    //    False: Take a random cell in run and link it north. Reset run. Move east
-    // 2. If unable to link east. Reset run and link north.
-    namespace sidewinder
+    namespace generator
     {
-        void apply(grid* grid)
+        // Sidewinder Algorithm
+        // For each cell in a row:
+        // 1. Flip a coin.
+        //    True:  Link and move east. Add cell to current run
+        //    False: Take a random cell in run and link it north. Reset run. Move east
+        // 2. If unable to link east. Reset run and link north.
+        namespace sidewinder
         {
-            for (unsigned row = 0; row < grid->number_of_rows(); ++row)
+            void apply(grid* grid)
             {
-                std::vector<cell*> run;
-                for (unsigned collumn = 0; collumn < grid->number_of_collumns(); ++collumn)
+                for (unsigned row = 0; row < grid->number_of_rows(); ++row)
                 {
-                    cell* current_cell = grid->get_cell(row, collumn);
-
-                    run.push_back(current_cell);
-
-                    bool move_east = math::probability::flip_coin();
-                    bool at_eastern_boundary = current_cell->east() == nullptr;
-                    bool at_southern_boundary = current_cell->south() == nullptr;
-
-                    if (at_southern_boundary || (move_east && !at_eastern_boundary))
+                    std::vector<cell*> run;
+                    for (unsigned collumn = 0; collumn < grid->number_of_collumns(); ++collumn)
                     {
-                        current_cell->link_with(dir::EAST);
+                        cell* current_cell = grid->get_cell(row, collumn);
+
                         run.push_back(current_cell);
-                    }
-                    else
-                    {
-                        run[math::probability::random_number(0,run.size() -1)]->link_with(dir::SOUTH);
-                        run.clear();
+
+                        bool move_east = math::probability::flip_coin();
+                        bool at_eastern_boundary = current_cell->east() == nullptr;
+                        bool at_southern_boundary = current_cell->south() == nullptr;
+
+                        if (at_southern_boundary || (move_east && !at_eastern_boundary))
+                        {
+                            current_cell->link_with(dir::EAST);
+                            run.push_back(current_cell);
+                        }
+                        else
+                        {
+                            run[math::probability::random_number(0,run.size() -1)]->link_with(dir::SOUTH);
+                            run.clear();
+                        }
                     }
                 }
             }
-        }
-    } //namespace sidewinder
+        } //namespace sidewinder
+    } //namespace generator
 }//namespace maze

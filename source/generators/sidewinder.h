@@ -7,8 +7,11 @@ namespace maze
 
 namespace maze
 {
-    namespace sidewinder
+    namespace generator
     {
-        void apply(grid* grid);
+        namespace sidewinder
+        {
+            void apply(grid* grid);
+        }
     }
 }

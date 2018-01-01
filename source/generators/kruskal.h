@@ -7,8 +7,11 @@ namespace maze
 
 namespace maze
 {
-    namespace kruskal
+    namespace generator
     {
-        void apply(grid* grid);
+         namespace kruskal
+        {
+            void apply(grid* grid);
+        }
     }
 }

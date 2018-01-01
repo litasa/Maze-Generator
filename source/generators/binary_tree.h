@@ -7,8 +7,11 @@ namespace maze
 
 namespace maze
 {
-    namespace binary_tree
+    namespace generator
     {
-        void apply(grid* grid);
+        namespace binary_tree
+        {
+            void apply(grid* grid);
+        }
     }
 }
