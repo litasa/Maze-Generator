@@ -20,6 +20,9 @@ namespace maze
 
         cell(uint32_t row, uint32_t collumn) : _row(row), _collumn(collumn) { };
 
+        unsigned y() { return _row; }
+        unsigned x() { return _collumn; }
+
         void link_with(cell* cell, bool bidirectional = true);
 
         void link_with(dir dir, bool bidirectional = true);
@@ -40,7 +43,6 @@ namespace maze
         cell* west() { return _neighbours[dir::WEST]; }
         cell* north() { return _neighbours[dir::NORTH]; }
         cell* south() { return _neighbours[dir::SOUTH]; }
-
     };
 }
  
