@@ -323,6 +323,30 @@ namespace maze
                 }
             }
         }
+
+        std::string toString(cell * cell)
+        {
+            std::stringstream ss;
+            if (cell)
+                ss << "(" << cell->x() << ", " << cell->y() << ")";
+            else
+                ss << "(null)";
+            return ss.str();
+        }
+
+        void print_shortest_path(std::vector<cell*>& vec)
+        {
+            for (unsigned i = 0; i < vec.size(); ++i)
+            {
+                cell* cell = vec[i];
+                std::cout << toString(cell);
+                if (i != vec.size() - 1)
+                {
+                     std::cout << "->";
+                }
+            }
+            std::cout << std::endl;
+        }
     }
 }
 
