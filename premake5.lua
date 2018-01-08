@@ -16,7 +16,7 @@ workspace "Maze"
     filter { }
 
 project "maze_generation"
-    kind "ConsoleApp"
+    kind "StaticLib"
     language "C++"
     location "solution"
     targetdir "bin/%{cfg.buildcfg}/%{cfg.architecture}/"
@@ -54,7 +54,36 @@ project "unit_tests"
 
     includedirs {
     }
+    links{
+        "maze_generation"
+    }
 
+
+    --Debug and Release configurations
+    filter "configurations:Debug"
+        defines { "DEBUG" }
+        symbols "On"
+
+    filter "configurations:Release"
+        defines { "NDEBUG" }
+        optimize "On"
+
+    filter { }
+
+project "main_wrapper"
+    kind "ConsoleApp"
+    language "C++"
+    location "solution"
+
+    targetdir "bin/%{cfg.buildcfg}/%{cfg.architecture}/"
+
+    files { "./source/main.cpp" }
+
+    includedirs {
+    }
+    links{
+        "maze_generation"
+    }
 
     --Debug and Release configurations
     filter "configurations:Debug"
