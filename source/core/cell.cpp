@@ -3,39 +3,51 @@
 
 namespace maze
 {
-    void cell::link_with(cell* cell, bool bidirectional)
+    bool cell::link_with(cell* cell, bool bidirectional)
     {
         if (cell != nullptr)
         {
-            _links.push_back(cell);
             if (bidirectional)
             {
                 cell->link_with(this, false);
             }
+            _links.push_back(cell);
+            return true;
         }
+        return false;
     }
 
-    void cell::link_with(dir dir, bool bidirectional)
+    bool cell::link_with(dir dir, bool bidirectional)
     {
-        link_with(_neighbours[dir], bidirectional);
+        return link_with(_neighbours[dir], bidirectional);
     }
 
-    void cell::unlink(cell* target, bool bidirectional)
+    bool cell::unlink(cell* target, bool bidirectional)
     {
+        std::size_t size_before = _links.size();
         if (target != nullptr)
         {
             if (bidirectional)
             {
-                cell* linkee = *std::find(_links.begin(), _links.end(), target);
-                linkee->unlink(this, false);
+                auto in_links = std::find(_links.begin(), _links.end(), target);
+                if (in_links != _links.end())
+                {
+                    bool success = (*in_links)->unlink(this, false);
+                    if (!success)
+                    {
+                        return false;
+                    }
+                }
             }
             _links.erase(std::remove_if(_links.begin(), _links.end(), [&target](maze::cell* i) {return i == target; }), _links.end());
+            return size_before > _links.size();
         }
+        return false;
     }
 
-    void cell::unlink(dir dir, bool bidirectional)
+    bool cell::unlink(dir dir, bool bidirectional)
     {
-        this->unlink(_neighbours[dir], bidirectional);
+        return this->unlink(_neighbours[dir], bidirectional);
     }
 
     bool cell::is_linked(cell* cell)
@@ -57,4 +69,27 @@ namespace maze
     {
         return _neighbours[dir];
     }
+}
+
+maze::dir maze::helper::opposite_dir(maze::dir dir)
+{
+    switch (dir)
+    {
+    case maze::NORTH:
+        return maze::SOUTH;
+    case maze::SOUTH:
+        return maze::NORTH;
+    case maze::WEST:
+        return maze::EAST;
+    case maze::EAST:
+        return maze::WEST;
+    default:
+        return maze::NORTH;
+    }
+}
+
+void maze::helper::set_neighbours(cell * current, dir dir, cell * neighbour)
+{
+    current->_neighbours[dir] = neighbour;
+    neighbour->_neighbours[opposite_dir(dir)] = current;
 }
