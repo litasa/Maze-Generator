@@ -1,3 +1,4 @@
+#pragma once
 #include <unordered_map>
 //forward decleration
 namespace maze
