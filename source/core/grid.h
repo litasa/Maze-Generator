@@ -25,6 +25,8 @@ namespace maze
 
         cell* get_cell(int row, int collumn);
 
+        cell* get_cell(unsigned number);
+
         uint32_t number_of_cells() { return _rows*_collumns; }
         uint32_t number_of_rows() { return _rows; }
         uint32_t number_of_collumns() { return _collumns; }
@@ -34,6 +36,6 @@ namespace maze
         void setup_cells();
 
         uint32_t _rows, _collumns;
-        std::vector<std::vector<cell*>> _grid;
+        std::vector<cell*> _grid;
     };
 }

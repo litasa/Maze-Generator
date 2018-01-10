@@ -17,7 +17,11 @@ namespace maze
 		{
 			for (uint32_t collumn = 0; collumn < _collumns; ++collumn)
 			{
-				delete _grid[row][collumn];
+                const unsigned pos = row * _collumns + collumn;
+                if (_grid[pos])
+                {
+                    delete _grid[pos];
+                }
 			}
 		}
 	}
@@ -32,8 +36,14 @@ namespace maze
 		{
 			return nullptr;
 		}
-		return _grid[row][collumn];
+        const unsigned pos = row * _collumns + collumn;
+		return _grid[pos];
 	}
+
+    cell * grid::get_cell(unsigned number)
+    {
+        return _grid[number];
+    }
 	
 	//private functions
 	void grid::setup_cells()
@@ -42,21 +52,23 @@ namespace maze
 		{
 			for (uint32_t collumn = 0; collumn < _collumns; ++collumn)
 			{
-				_grid[row][collumn]->_neighbours[dir::NORTH] = get_cell(row - 1, collumn);
-				_grid[row][collumn]->_neighbours[dir::SOUTH] = get_cell(row + 1, collumn);
-				_grid[row][collumn]->_neighbours[dir::WEST] = get_cell(row, collumn - 1);
-				_grid[row][collumn]->_neighbours[dir::EAST] = get_cell(row, collumn + 1);
+                const unsigned pos = row * _collumns + collumn;
+				_grid[pos]->_neighbours[dir::NORTH] = get_cell(row - 1, collumn);
+				_grid[pos]->_neighbours[dir::SOUTH] = get_cell(row + 1, collumn);
+				_grid[pos]->_neighbours[dir::WEST] = get_cell(row, collumn - 1);
+				_grid[pos]->_neighbours[dir::EAST] = get_cell(row, collumn + 1);
 			}
 		}
 	}
 	void grid::initialize()
 	{
-		_grid.resize(_collumns, std::vector<cell*>(_rows, nullptr));
+		_grid.resize(_collumns * _rows);
 		for (uint32_t row = 0; row < _rows; ++row)
 		{
 			for (uint32_t collumn = 0; collumn < _collumns; ++collumn)
 			{
-				_grid[row][collumn] = new cell(row, collumn);
+                const unsigned pos = row * _collumns + collumn;
+				_grid[pos] = new cell(row, collumn);
 			}
 		}
 	}
