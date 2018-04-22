@@ -8,7 +8,12 @@ namespace maze
 {
     namespace generator
     {
-            void kruskal::apply(grid* grid)
+		void kruskal::generate_grid()
+		{
+			apply(*_grid);
+		}
+
+		void kruskal::apply(grid& grid)
             {
                 //vector of neighbours south or east from current
                 std::vector<std::pair<cell*, cell*>> neighbours;
@@ -16,12 +21,12 @@ namespace maze
                 std::unordered_map<unsigned, std::vector<cell*>> cells_in_set;
 
                 //initialize the sets and neighbours
-                for (unsigned row = 0; row < grid->number_of_rows(); ++row)
+                for (unsigned row = 0; row < grid.number_of_rows(); ++row)
                 {
-                    for (unsigned collumn = 0; collumn < grid->number_of_collumns(); ++collumn)
+                    for (unsigned collumn = 0; collumn < grid.number_of_collumns(); ++collumn)
                     {
                         unsigned set = (unsigned)set_for_cell.size();
-                        cell* current_cell = grid->get_cell(row, collumn);
+                        cell* current_cell = grid.get_cell(row, collumn);
                         set_for_cell[current_cell] = set;
                         cells_in_set[set].push_back(current_cell);
 

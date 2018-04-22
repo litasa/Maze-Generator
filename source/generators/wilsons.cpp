@@ -11,25 +11,31 @@ namespace maze
 {
 namespace generator
 {
-    void wilsons::apply(grid* grid, unsigned& steps)
+	void wilsons::generate_grid()
+	{
+		unsigned temp = 0;
+		apply(*_grid, temp);
+	}
+
+	void wilsons::apply(grid& grid, unsigned& steps)
     {
         unsigned start_pos = 0;
         unsigned end_pos = 0;
         do
         {
-            start_pos = math::probability::random_number(0, grid->number_of_cells() - 1);
-            end_pos = math::probability::random_number(0, grid->number_of_cells() - 1);
+            start_pos = math::probability::random_number(0, grid.number_of_cells() - 1);
+            end_pos = math::probability::random_number(0, grid.number_of_cells() - 1);
         } while (start_pos == end_pos);
 
-        cell* start = grid->get_cell(start_pos);
-        cell* end = grid->get_cell(end_pos);
+        cell* start = grid.get_cell(start_pos);
+        cell* end = grid.get_cell(end_pos);
 
         std::unordered_map<cell*, cell*> marked_cells;
-        marked_cells.reserve(grid->number_of_cells()); //know size will not exceed current number of cells
+        marked_cells.reserve(grid.number_of_cells()); //know size will not exceed current number of cells
         marked_cells[end] = nullptr;
         
         std::vector<cell*> current_path;
-        current_path.reserve(grid->number_of_cells()); //know size will not exceed current number of cells
+        current_path.reserve(grid.number_of_cells()); //know size will not exceed current number of cells
         current_path.push_back(start);
 
         auto random_step_dir = []() {
@@ -41,7 +47,7 @@ namespace generator
         };
 
         cell* current = start;
-        while (marked_cells.size() < grid->number_of_cells())
+        while (marked_cells.size() < grid.number_of_cells())
         {
             steps++;
             // take random step
@@ -72,7 +78,7 @@ namespace generator
                 }
 
                 // All cells visited
-                if (marked_cells.size() == grid->number_of_cells())
+                if (marked_cells.size() == grid.number_of_cells())
                 {
                     break;
                 }
@@ -81,7 +87,7 @@ namespace generator
                 // pick new position to start from.
                 while (marked_cells.count(current))
                 {
-                    current = grid->get_cell(math::probability::random_number(0, grid->number_of_cells() - 1));
+                    current = grid.get_cell(math::probability::random_number(0, grid.number_of_cells() - 1));
                 }
                 current_path.push_back(current);
                 continue;

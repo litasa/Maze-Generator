@@ -14,8 +14,13 @@ namespace maze
          class aldous_broder : public IGenerator
 		 {
 		 public:
-			 void apply(grid* grid) override final;
-             void apply(grid* grid, unsigned& num_steps) override final;
+			 aldous_broder(std::unique_ptr<grid> grid) : IGenerator(std::move(grid)) {}
+			 virtual ~aldous_broder() {}
+
+			 virtual void generate_grid() override final;
+
+			 static void apply(grid& grid);
+             static void apply(grid& grid, unsigned& num_steps);
 		 };
     }
 }

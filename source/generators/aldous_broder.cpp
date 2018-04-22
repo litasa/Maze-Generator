@@ -7,22 +7,28 @@ namespace maze
 {
 namespace generator
 {
-	void aldous_broder::apply(grid * grid)
+	void aldous_broder::generate_grid()
+	{
+		unsigned temp = 0;
+		apply(*_grid, temp);
+	}
+
+	void aldous_broder::apply(grid& grid)
 	{
 		unsigned temp = 0;
 		apply(grid, temp);
 	}
-	void aldous_broder::apply(grid* grid, unsigned& num_steps)
+	void aldous_broder::apply(grid& grid, unsigned& num_steps)
     {
-        unsigned rows = grid->number_of_rows();
-        unsigned collumns = grid->number_of_collumns();
+        unsigned rows = grid.number_of_rows();
+        unsigned collumns = grid.number_of_collumns();
 
         unsigned startRow = math::probability::random_number(0, rows - 1);
         unsigned startCollumn = math::probability::random_number(0, collumns - 1);
 
-        unsigned num_unvisited = grid->number_of_cells() - 1;
+        unsigned num_unvisited = grid.number_of_cells() - 1;
 
-        cell* current = grid->get_cell(startRow, startCollumn);
+        cell* current = grid.get_cell(startRow, startCollumn);
 
         while (num_unvisited > 0)
         {

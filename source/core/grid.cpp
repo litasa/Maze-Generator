@@ -26,7 +26,7 @@ namespace maze
 		}
 	}
 
-	cell* grid::get_cell(int row, int collumn)
+	cell* grid::get_cell(int row, int collumn) const
 	{
 		if (row >= (int)_rows || row < 0)
 		{
@@ -40,9 +40,13 @@ namespace maze
 		return _grid[pos];
 	}
 
-    cell * grid::get_cell(unsigned number)
+    cell * grid::get_cell(unsigned number) const
     {
-        return _grid[number];
+		if (number < _grid.size())
+		{
+			return _grid[number];
+		}
+		return nullptr;
     }
 	
 	//private functions

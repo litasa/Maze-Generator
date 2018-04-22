@@ -14,7 +14,12 @@ namespace maze
         class wilsons : public IGenerator
         {
 		public:
-            void apply(grid* grid, unsigned& steps) override final;
+			wilsons(std::unique_ptr<grid> grid) : IGenerator(std::move(grid)) {}
+			virtual ~wilsons() {}
+
+			virtual void generate_grid() override final;
+
+            static void apply(grid& grid, unsigned& steps);
 		};
     }
 }

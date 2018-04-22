@@ -20,7 +20,12 @@ namespace maze
          class kruskal : public IGenerator
          {
 		 public:
-            void apply(grid* grid) override final;
+			 kruskal(std::unique_ptr<grid> grid) : IGenerator(std::move(grid)) {}
+			 virtual ~kruskal() {}
+
+			 virtual void generate_grid() override final;
+
+             static void apply(grid& grid);
 		 };
     }
 }

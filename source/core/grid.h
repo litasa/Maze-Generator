@@ -23,13 +23,15 @@ namespace maze
 
         ~grid();
 
-        cell* get_cell(int row, int collumn);
+		cell* get_cell(int row, int collumn) const;
+		cell* get_cell(unsigned number) const;
 
-        cell* get_cell(unsigned number);
+		cell* get_cell(int row, int collumn) { return const_cast<cell*>(std::as_const(*this).get_cell(row,collumn)); }
+		cell* get_cell(unsigned number) { return const_cast<cell*>(std::as_const(*this).get_cell(number)); }
 
-        uint32_t number_of_cells() { return _rows*_collumns; }
-        uint32_t number_of_rows() { return _rows; }
-        uint32_t number_of_collumns() { return _collumns; }
+        uint32_t number_of_cells() const { return _rows*_collumns; }
+        uint32_t number_of_rows() const { return _rows; }
+        uint32_t number_of_collumns() const { return _collumns; }
 
     private:
         void initialize();
@@ -37,5 +39,7 @@ namespace maze
 
         uint32_t _rows, _collumns;
         std::vector<cell*> _grid;
+
+		
     };
 }

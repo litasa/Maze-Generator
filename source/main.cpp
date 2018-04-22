@@ -19,7 +19,7 @@ int main()
 {
     using namespace maze;
     int width, height;
-    width = height = 30;
+    width = height = 10;
     maze::grid g(width, height);
 
     /*************
@@ -35,6 +35,11 @@ int main()
         if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
     io::print_to_console(&g);
 
+	maze::generator::aldous_broder generator(std::make_unique<grid>(width,height));
+
+	generator.generate_grid();
+	generator.print_to_console();
+
     //maze::generator::binary_tree::apply(&g);
     //maze::generator::sidewinder::apply(&g);
     //maze::generator::kruskal::apply(&g);
@@ -48,5 +53,5 @@ int main()
     //io::print_shortest_path(shortest_path);
     //io::save_as_txt(&g, "test.txt");
 
-    //std::cin.get();
+    std::cin.get();
 }

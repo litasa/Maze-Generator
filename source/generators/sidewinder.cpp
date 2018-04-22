@@ -8,14 +8,19 @@ namespace maze
 {
     namespace generator
     {
-        void sidewinder::apply(grid* grid)
+		void sidewinder::generate_grid()
+		{
+			apply(*_grid);
+		}
+
+		void sidewinder::apply(grid& grid)
         {
-            for (unsigned row = 0; row < grid->number_of_rows(); ++row)
+            for (unsigned row = 0; row < grid.number_of_rows(); ++row)
             {
                 std::vector<cell*> run;
-                for (unsigned collumn = 0; collumn < grid->number_of_collumns(); ++collumn)
+                for (unsigned collumn = 0; collumn < grid.number_of_collumns(); ++collumn)
                 {
-                    cell* current_cell = grid->get_cell(row, collumn);
+                    cell* current_cell = grid.get_cell(row, collumn);
 
                     run.push_back(current_cell);
 

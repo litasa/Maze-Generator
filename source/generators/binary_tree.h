@@ -17,7 +17,12 @@ namespace maze
         class binary_tree : public IGenerator
         {
 		public:
-            void apply(grid* grid) override final;
+			binary_tree(std::unique_ptr<grid> grid) : IGenerator(std::move(grid)) {}
+			virtual ~binary_tree() {}
+
+			virtual void generate_grid() override final;
+
+            static void apply(grid& grid);
 		};
     }
 }

@@ -19,7 +19,12 @@ namespace maze
         class sidewinder : public IGenerator
         {
 		public:
-            void apply(grid* grid) override final;
+			sidewinder(std::unique_ptr<grid> grid) : IGenerator(std::move(grid)) {}
+			virtual ~sidewinder() {}
+
+			virtual void generate_grid() override final;
+
+            static void apply(grid& grid);
 		};
     }
 }

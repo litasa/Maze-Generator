@@ -8,11 +8,17 @@
 
 #include "../core/grid.h"
 #include "../core/cell.h"
+#include "../generators/i_generator.h"
 namespace maze
 {
     namespace io
     {
-        void print_to_console(grid* grid)
+		void print_to_console(maze::generator::IGenerator& generator)
+		{
+			
+		}
+
+        void print_to_console(const grid* grid)
         {
             //potential corners: ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼ *
 
@@ -23,7 +29,7 @@ namespace maze
             _setmode(_fileno(stdout), prev_mode);
         }
 
-        void save_as_txt(grid* grid, const char* path)
+        void save_as_txt(const grid* grid, const char* path)
         {
             std::wstringstream ss = grid_to_utf8(grid);
             FILE *file;
@@ -32,7 +38,7 @@ namespace maze
             fclose(file);
         }
 
-        std::wstringstream grid_to_utf8(grid* grid)
+        std::wstringstream grid_to_utf8(const grid* grid)
         {
             std::wstringstream ss;
             cell* current;
