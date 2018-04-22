@@ -5,6 +5,8 @@
 #include "generators\kruskal.h"
 #include "generators\sidewinder.h"
 #include "generators\binary_tree.h"
+#include "generators\aldous_broder.h"
+#include "generators\wilsons.h"
 
 #include "solvers\dijkstras.h"
 
@@ -15,8 +17,9 @@ void problem(unsigned line)
 
 int main()
 {
+    using namespace maze;
     int width, height;
-    width = height = 5;
+    width = height = 30;
     maze::grid g(width, height);
 
     /*************
@@ -30,17 +33,20 @@ int main()
         if (g.get_cell(0, -1) != nullptr) { problem(__LINE__); }
         //outside below
         if (g.get_cell(0, height + 1) != nullptr) { problem(__LINE__); }
-    maze::io::print_to_console(&g);
+    io::print_to_console(&g);
 
     //maze::generator::binary_tree::apply(&g);
     //maze::generator::sidewinder::apply(&g);
-    maze::generator::kruskal::apply(&g);
-    
-    maze::io::print_to_console(&g);
-    maze::solver::dijkstras::dijkstras_result ret = maze::solver::dijkstras::shortest_path(&g);
-    std::vector<maze::cell*> shortest_path = maze::solver::dijkstras::reconstruct_path(ret);
-    maze::io::print_shortest_path(shortest_path);
-    maze::io::save_as_txt(&g, "test.txt");
+    //maze::generator::kruskal::apply(&g);
+    //unsigned steps = 0;
+    //maze::generator::wilsons::apply(&g, steps);
+    ////maze::generator::aldous_broder::apply(&g, steps);
+    //std::cout << "Num steps before converging: " << steps << std::endl;
+    //io::print_to_console(&g);
+    //solver::dijkstras::dijkstras_result ret = maze::solver::dijkstras::shortest_path(&g);
+    //std::vector<maze::cell*> shortest_path = maze::solver::dijkstras::reconstruct_path(ret);
+    //io::print_shortest_path(shortest_path);
+    //io::save_as_txt(&g, "test.txt");
 
-    std::cin.get();
+    //std::cin.get();
 }

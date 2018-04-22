@@ -1,4 +1,5 @@
 #pragma once
+#include "i_generator.h"
 //forward decleration
 namespace maze
 {
@@ -9,9 +10,14 @@ namespace maze
 {
     namespace generator
     {
-        namespace binary_tree
+        // Binary Tree Algorithm
+        // For every cell flip a coin
+        // If true we want to link north
+        // Else we want to link east
+        class binary_tree : public IGenerator
         {
-            void apply(grid* grid);
-        }
+		public:
+            void apply(grid* grid) override final;
+		};
     }
 }

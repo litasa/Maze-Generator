@@ -1,4 +1,6 @@
 #pragma once
+
+#include "i_generator.h"
 //forward decleration
 namespace maze
 {
@@ -9,9 +11,11 @@ namespace maze
 {
     namespace generator
     {
-         namespace aldous_broder
-        {
-            void apply(grid* grid, unsigned& num_steps);
-        }
+         class aldous_broder : public IGenerator
+		 {
+		 public:
+			 void apply(grid* grid) override final;
+             void apply(grid* grid, unsigned& num_steps) override final;
+		 };
     }
 }

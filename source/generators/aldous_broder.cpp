@@ -7,9 +7,12 @@ namespace maze
 {
 namespace generator
 {
-namespace aldous_broder
-{
-    void apply(grid* grid, unsigned& num_steps)
+	void aldous_broder::apply(grid * grid)
+	{
+		unsigned temp = 0;
+		apply(grid, temp);
+	}
+	void aldous_broder::apply(grid* grid, unsigned& num_steps)
     {
         unsigned rows = grid->number_of_rows();
         unsigned collumns = grid->number_of_collumns();
@@ -41,6 +44,5 @@ namespace aldous_broder
             num_steps++;
         }
     }
-} //namespace aldous_broder
 } //namespace generator
 } //namespace maze
